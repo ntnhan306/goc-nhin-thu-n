@@ -7,7 +7,7 @@ canvas.height = window.innerHeight;
 
 const ctx = canvas.getContext('2d');
 
-addCloud(10);
+addCloud(Math.floor(Math.random() * 6) + 9);
 
 function loop() {
 
