@@ -20,7 +20,7 @@ export function addCloud(num) {
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
             speed: 0.2 + Math.random() * 0.5,
-            alpha: 0.2 + Math.random() * 0.1,
+            alpha: 0.4 + Math.random() * 0.1,
             scale: 0.2 + Math.random() * 0.2
         });
     }
