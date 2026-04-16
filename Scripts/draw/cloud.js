@@ -18,7 +18,7 @@ export function addCloud(num) {
     for (let i = 0; i < num; i++) {
         clouds.push({
             x: Math.random() * window.innerWidth,
-            y: Math.random() * 200,
+            y: Math.random() * window.innerHeight,
             speed: 0.2 + Math.random() * 0.5,
             alpha: 0.2 + Math.random() * 0.1,
             scale: 0.2 + Math.random() * 0.2
