@@ -1,6 +1,6 @@
 let clouds = [];
 const cloudImg = new Image();
-cloudImg.src = "../../Images/Clouds/cloud1.png"; 
+cloudImg.src = "/Images/Clouds/cloud1.png"; 
 
 export function drawCloud(ctx, x, y, alpha = 0.8, scale = 1) {
     ctx.save();

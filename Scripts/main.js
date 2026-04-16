@@ -1,4 +1,4 @@
-import { addCloud, updateClouds } from './draw/cloud.js';
+import { addCloud, updateClouds } from '/Scripts/draw/cloud.js';
 
 const canvas = document.getElementById('canvas');
 
