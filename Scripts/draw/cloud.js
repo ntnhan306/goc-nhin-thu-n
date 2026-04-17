@@ -1,30 +1,43 @@
 let clouds = [];
-const cloudImg = new Image();
-cloudImg.src = new URL('../../Images/Clouds/cloud1.png', import.meta.url); 
 
 let loaded = false;
 let firstLoad = true;
 
-cloudImg.onload = () => {
-    loaded = true;
-};
+const cloudImgs = [];
+let totalImages = 1;
+let loadedCount = 0;
 
-export function drawCloud(ctx, x, y, alpha = 0.8, scale = 1) {
+for (let i = 1; i <= totalImages; i++) {
+    const img = new Image();
+    img.src = new URL(`../../Images/Clouds/cloud${i}.png`, import.meta.url);
+
+    img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+            loaded = true;
+        }
+    };
+
+    cloudImgs.push(img);
+}
+
+export function drawCloud(ctx, cloud) {
     ctx.save();
 
-    ctx.globalAlpha = alpha;
+    ctx.globalAlpha = cloud.alpha;
     
-    ctx.drawImage(cloudImg, x, y, cloudImg.width * scale, cloudImg.height * scale)
+    ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.img.width * cloud.scale, cloud.img.height * cloud.scale );
 
     ctx.restore();
 }
 
 export function addCloud(num) {
     clouds = [];
-    let firstLoadnum = 5;
+    let firstLoadNum = 5;
 
-    for (let i = 0; i < (firstLoad ? firstLoadnum : num); i++) {
+    for (let i = 0; i < (firstLoad ? firstLoadNum : num); i++) {
         clouds.push({
+            img: cloudImgs[Math.floor(Math.random() * cloudImgs.length)],
             x: firstLoad ? Math.random() * window.innerWidth : -100 - Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
             speed: 0.2 + Math.random() * 0.5,
@@ -41,7 +54,7 @@ export function updateClouds(ctx, canvas) {
     if (!loaded) return;
 
     clouds.forEach(c => {
-        let CLOUD_WIDTH = cloudImg.width * c.scale;
+        let CLOUD_WIDTH = c.img.width * c.scale;
 
         c.x += c.speed * c.dir;
 
@@ -53,6 +66,6 @@ export function updateClouds(ctx, canvas) {
             c.x = canvas.width +  Math.random() * canvas.width;
             c.y = Math.random() * canvas.height;
         }
-        drawCloud(ctx, c.x, c.y, c.alpha, c.scale);
+        drawCloud(ctx, c);
     });
 }
