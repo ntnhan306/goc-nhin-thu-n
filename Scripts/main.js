@@ -1,11 +1,10 @@
 import { addCloud, updateClouds } from './draw/cloud.js';
+import { resizeCanvas } from './window/resize.js';
 
 const canvas = document.getElementById('canvas');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
 const ctx = canvas.getContext('2d');
+
+resizeCanvas(canvas, ctx);
 
 addCloud(Math.floor(Math.random() * 6) + 9);
 
@@ -21,3 +20,5 @@ function loop() {
 };
 
 loop();
+
+window.addEventListener("resize", resizeCanvas.bind(null, canvas, ctx));
