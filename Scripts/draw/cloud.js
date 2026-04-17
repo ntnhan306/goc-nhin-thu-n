@@ -3,7 +3,7 @@ let clouds = [];
 let loaded = false;
 let firstLoad = true;
 const cloudImgs = [];
-let totalImages = 1;
+let totalImages = 25;
 let loadedCount = 0;
 for (let i = 1; i <= totalImages; i++) {
     const img = new Image();
