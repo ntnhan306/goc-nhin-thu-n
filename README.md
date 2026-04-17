@@ -1,6 +1,8 @@
-## ****Tên học sinh:** Trần Thủy Tiên, Nguyễn Thiện Nhân, Nguyễn Ngọc Khánh Mai, Lê Nguyễn Thanh Ngọc**
+## Thông tin
 
-## ****Lớp:** 8/4**
+****Tên học sinh:** Trần Thủy Tiên, Nguyễn Thiện Nhân, Nguyễn Ngọc Khánh Mai, Lê Nguyễn Thanh Ngọc**
+
+****Lớp:** 8/4**
 # Cuộc thi Sáng tạo Thanh thiếu niên nhi đồng
 
 *****Ý tưởng:** Game "Góc Nhìn Thứ N"***
