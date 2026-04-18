@@ -1,4 +1,1 @@
-export function randomInt(min,max){return Math.floor(Math.random()*(max-min+1))+min}
-export function randomFloat(min,max){return Math.random()*(max-min)+min}
-export function randomList(list){return Array.isArray(list)&&list.length?list[Math.floor(Math.random()*list.length)]:null}
-export default {randomInt,randomFloat,randomList};
+export function randomInt(/**@type{number}*/min,/**@type{number}*/max){return Math.floor(Math.random()*(max-min+1))+min}export function randomFloat(/**@type{number}*/min,/**@type{number}*/max){return Math.random()*(max-min)+min}export function randomList(/**@type{Array<any>}*/list){return Array.isArray(list)&&list.length?list[Math.floor(Math.random()*list.length)]:null}export default{randomInt,randomFloat,randomList}
