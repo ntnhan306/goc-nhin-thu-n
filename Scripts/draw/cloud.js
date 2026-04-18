@@ -1,4 +1,4 @@
-import random from '../number/random.js';
+import random from '../utils/random.js';
 let clouds = [];
 let loaded = false;
 let firstLoad = true;
