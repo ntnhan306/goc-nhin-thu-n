@@ -21,7 +21,8 @@ export function initAuthUI() {
 #auth-ui-container{overflow:visible!important}
 #auth-ui-container .soap-liquid-btn,#auth-ui-container .soap-liquid-circle{position:relative;isolation:isolate;overflow:visible;border:none!important;outline:none!important;color:#fff;cursor:pointer;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:inset 2px 2px 12px rgba(0,105,255,.30),inset -3px -3px 14px rgba(0,75,210,.18),inset 0 0 26px rgba(0,105,255,.10)!important;-webkit-tap-highlight-color:transparent;flex-shrink:0;transform-origin:center;transition:transform .32s cubic-bezier(.16,1,.3,1),box-shadow .45s cubic-bezier(.16,1,.3,1),background .3s ease}
 #auth-ui-container .soap-liquid-btn{min-height:52px;width:auto;padding:14px 28px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-size:14.5px;font-weight:600;letter-spacing:-.2px;line-height:1.3;text-align:center;white-space:nowrap;text-shadow:0 1px 4px rgba(0,40,120,.22)}
-#auth-ui-container .soap-liquid-btn>span{display:inline-block;width:max-content;min-width:0;white-space:nowrap;overflow:visible;text-overflow:clip;line-height:1.3;flex:0 0 auto}
+#auth-ui-container .soap-liquid-btn>span{display:inline-flex;align-items:center;width:max-content;min-width:0;white-space:nowrap;overflow:visible;text-overflow:clip;line-height:1.3;flex:0 0 auto}
+#auth-ui-container .soap-liquid-btn>span svg{width:16px;height:16px;flex:0 0 16px;display:block}
 #auth-ui-container .soap-liquid-circle{width:52px;height:52px;min-width:52px;min-height:52px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 52px}
 #auth-ui-container .soap-liquid-btn::before,#auth-ui-container .soap-liquid-circle::before{content:'';position:absolute;inset:1px;border-radius:inherit;pointer-events:none;box-shadow:inset 2px 2px 8px rgba(255,255,255,.24),inset -3px -3px 11px rgba(0,70,210,.20),inset 0 0 22px rgba(0,105,255,.12)}
 #auth-ui-container .soap-liquid-btn::after,#auth-ui-container .soap-liquid-circle::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 3px rgba(60,145,255,.20)}
@@ -30,10 +31,13 @@ export function initAuthUI() {
 #auth-ui-container .soap-liquid-btn:focus,#auth-ui-container .soap-liquid-btn:focus-visible,#auth-ui-container .soap-liquid-circle:focus,#auth-ui-container .soap-liquid-circle:focus-visible{border:none!important;outline:none!important}
 #auth-ui-container .soap-liquid-btn:active,#auth-ui-container .soap-liquid-circle:active{transform:scale(.95);transition-duration:.12s}
 #auth-ui-container .auth-user-wrapper{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:8px;overflow:visible;min-width:0;max-width:calc(100vw - 16px)}
+#auth-ui-container .auth-user-name{cursor:pointer!important}
+#auth-ui-container .auth-user-name>span{pointer-events:none}
 #auth-ui-container #svg-arrow{display:block;width:15px;height:15px;flex:0 0 auto;overflow:visible;pointer-events:none;transition:transform .4s cubic-bezier(.16,1,.3,1)}
-#auth-ui-container .liquid-dropdown-menu{position:absolute;top:calc(100% + 10px);right:0;z-index:1001;min-width:160px;max-width:min(320px,calc(100vw - 16px));padding:6px;display:none;flex-direction:column;overflow:visible;border:none!important;outline:none!important;border-radius:18px;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:inset 2px 2px 11px rgba(0,105,255,.30),inset -3px -3px 13px rgba(0,75,210,.18),inset 0 0 24px rgba(0,105,255,.10)!important;transform-origin:top right}
+#auth-ui-container .liquid-dropdown-menu{position:absolute;top:calc(100% + 10px);right:0;z-index:1001;min-width:175px;max-width:min(320px,calc(100vw - 16px));padding:6px;display:none;flex-direction:column;gap:2px;overflow:visible;border:none!important;outline:none!important;border-radius:18px;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:inset 2px 2px 11px rgba(0,105,255,.30),inset -3px -3px 13px rgba(0,75,210,.18),inset 0 0 24px rgba(0,105,255,.10)!important;transform-origin:top right}
 #auth-ui-container .liquid-dropdown-menu.show{display:flex;animation:liquidRubberOpen .68s cubic-bezier(.16,1.35,.3,1)}
-#auth-ui-container .liquid-dropdown-item{width:100%;min-height:40px;padding:10px 14px;border:none!important;outline:none!important;border-radius:12px;background:transparent;color:#fff;font-family:inherit;font-size:14px;font-weight:500;line-height:1.3;text-align:left;white-space:nowrap;overflow:visible;cursor:pointer;transition:transform .3s cubic-bezier(.16,1,.3,1),background .2s ease,box-shadow .3s ease}
+#auth-ui-container .liquid-dropdown-item{width:100%;min-height:42px;padding:10px 14px;border:none!important;outline:none!important;border-radius:12px;background:transparent;color:#fff;font-family:inherit;font-size:14px;font-weight:500;line-height:1.3;text-align:left;white-space:nowrap;overflow:visible;cursor:pointer;display:flex;align-items:center;gap:9px;transition:transform .3s cubic-bezier(.16,1,.3,1),background .2s ease,box-shadow .3s ease}
+#auth-ui-container .liquid-dropdown-item svg{width:16px;height:16px;min-width:16px;display:block;pointer-events:none}
 #auth-ui-container .liquid-dropdown-item:hover{background:rgba(0,105,255,.025);box-shadow:inset 1px 1px 7px rgba(0,105,255,.24),inset -2px -2px 7px rgba(0,75,210,.13);transform:translateX(3px) scale(1.015)}
 #auth-ui-container .liquid-dropdown-item:focus,#auth-ui-container .liquid-dropdown-item:focus-visible{border:none!important;outline:none!important}
 #auth-modal-overlay{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;width:100vw;height:100dvh;min-height:100vh;padding:max(20px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));overflow:hidden;overscroll-behavior:contain;background:rgba(8,20,40,.30);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .32s ease,visibility .32s ease}
@@ -49,9 +53,9 @@ export function initAuthUI() {
 .auth-modal-scroll::-webkit-scrollbar{display:none;width:0;height:0}
 .auth-custom-scrollbar{position:absolute;top:4px;right:1px;bottom:5px;width:4px;display:none;z-index:30;pointer-events:none}
 .auth-custom-scrollbar.visible{display:block}
-.auth-custom-scrollbar-track{position:absolute;inset:0;width:4px;border-radius:999px;background:rgba(255,255,255,.035);box-shadow:inset 1px 1px 3px rgba(255,255,255,.08),inset -1px -1px 3px rgba(0,75,210,.05)}
-.auth-custom-scrollbar-thumb{position:absolute;top:0;left:0;width:4px;min-height:24px;border-radius:999px;background:rgba(190,220,255,.34);box-shadow:inset 1px 1px 3px rgba(255,255,255,.34),inset -1px -1px 3px rgba(0,75,210,.10),0 1px 4px rgba(0,70,180,.08);pointer-events:auto;cursor:pointer;transition:background .2s ease,box-shadow .2s ease}
-.auth-custom-scrollbar-thumb:hover,.auth-custom-scrollbar-thumb.dragging{background:rgba(205,230,255,.48);box-shadow:inset 1px 1px 3px rgba(255,255,255,.44),inset -1px -1px 3px rgba(0,75,210,.13),0 1px 5px rgba(0,70,180,.10)}
+.auth-custom-scrollbar-track{position:absolute;inset:0;width:4px;border-radius:999px;background:rgba(255,255,255,.10);box-shadow:inset 2px 2px 6px rgba(255,255,255,.20),inset -2px -2px 7px rgba(0,75,210,.08);pointer-events:auto}
+.auth-custom-scrollbar-thumb{position:absolute;top:0;left:0;width:4px;min-height:24px;border-radius:999px;background:rgba(235,242,252,.22);box-shadow:inset 2px 2px 6px rgba(255,255,255,.30),inset -2px -2px 7px rgba(0,75,210,.12),0 1px 4px rgba(0,70,180,.08);pointer-events:auto;cursor:pointer;transition:background .2s ease,box-shadow .2s ease}
+.auth-custom-scrollbar-thumb:hover,.auth-custom-scrollbar-thumb.dragging{background:rgba(235,242,252,.34);box-shadow:inset 2px 2px 6px rgba(255,255,255,.38),inset -2px -2px 7px rgba(0,75,210,.14),0 1px 5px rgba(0,70,180,.10)}
 .auth-form{position:relative;flex:0 0 auto;width:100%;min-width:0;display:flex;flex-direction:column;gap:12px;padding:2px 1px 3px;overflow:visible!important}
 .auth-field-group{position:relative;flex:0 0 auto;width:100%;min-width:0;display:flex;flex-direction:column;gap:5px;overflow:visible!important}
 .auth-label{display:block;flex:0 0 auto;padding-left:2px;color:rgba(255,255,255,.92);text-shadow:0 1px 4px rgba(0,60,160,.22);font-family:inherit;font-size:12.5px;font-weight:700;line-height:1.35;white-space:nowrap}
@@ -60,12 +64,14 @@ export function initAuthUI() {
 .auth-input::placeholder{color:rgba(255,255,255,.58);opacity:1}
 .auth-input:hover{background:rgba(255,255,255,.20)!important;box-shadow:inset 2px 2px 11px rgba(255,255,255,.44),inset -3px -3px 13px rgba(0,80,220,.14),inset 0 0 23px rgba(0,105,255,.09)}
 .auth-input:focus{background:rgba(255,255,255,.24)!important;box-shadow:inset 2px 2px 12px rgba(255,255,255,.50),inset -3px -3px 14px rgba(0,75,210,.16),inset 0 0 25px rgba(0,105,255,.12);transform:scale(1.012)}
+.auth-input:disabled{cursor:not-allowed;opacity:.76}
 .auth-input.auth-confirm-mismatch{box-shadow:inset 2px 2px 10px rgba(255,255,255,.38),inset -3px -3px 12px rgba(0,80,220,.12),inset 0 0 20px rgba(0,105,255,.07),0 0 0 2px rgba(239,68,68,.82)!important}
 .auth-input.auth-confirm-mismatch:focus{background:rgba(255,255,255,.24)!important;box-shadow:inset 2px 2px 12px rgba(255,255,255,.50),inset -3px -3px 14px rgba(0,75,210,.16),inset 0 0 25px rgba(0,105,255,.12),0 0 0 2px rgba(239,68,68,.92)!important;transform:scale(1.012)}
 .auth-password-input{padding-right:48px}
 .auth-eye{position:absolute;top:50%;right:6px;width:34px;height:34px;min-width:34px;min-height:34px;padding:0;display:flex;align-items:center;justify-content:center;transform:translateY(-50%);border:none!important;outline:none!important;border-radius:50%;color:rgba(255,255,255,.76);background:transparent!important;cursor:pointer;overflow:visible!important;z-index:3;transition:transform .22s cubic-bezier(.16,1,.3,1),color .2s ease,box-shadow .25s ease}
 .auth-eye:hover{color:#fff;transform:translateY(-50%) scale(1.08);box-shadow:inset 1px 1px 7px rgba(0,105,255,.16),inset -2px -2px 7px rgba(0,75,210,.08)}
 .auth-eye:active{transform:translateY(-50%) scale(.92)}
+.auth-eye:disabled{cursor:not-allowed;opacity:.55}
 .auth-eye svg{width:17px;height:17px;display:block;pointer-events:none}
 .auth-password-rules{position:relative;flex:0 0 auto;width:100%;display:flex;flex-direction:column;gap:3px;margin-top:1px;padding:8px 10px;border:1px solid rgba(255,255,255,.18);border-radius:12px;background:rgba(255,255,255,.05);box-shadow:inset 1px 1px 7px rgba(255,255,255,.10),inset -2px -2px 8px rgba(0,75,210,.05);overflow:visible}
 .auth-password-rule{display:flex;align-items:center;gap:7px;min-height:18px;color:rgba(255,255,255,.76);font-family:inherit;font-size:11.5px;font-weight:600;line-height:1.3;transition:color .2s ease}
@@ -92,11 +98,20 @@ export function initAuthUI() {
 .auth-error{position:relative;flex:0 0 auto;margin-top:-2px;color:#dc2626;font-family:inherit;font-size:12px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
 @keyframes authRuleSpin{to{transform:rotate(360deg)}}
 @keyframes authSpinner{to{transform:rotate(360deg)}}
+@keyframes liquidRubberOpen{
+0%{opacity:0;transform:translateY(-10px) scale(.86,.68)}
+30%{opacity:1;transform:translateY(4px) scale(1.06,1.11)}
+50%{transform:translateY(-3px) scale(.965,.94)}
+68%{transform:translateY(2px) scale(1.025,1.04)}
+84%{transform:translateY(-.5px) scale(.992,.985)}
+100%{opacity:1;transform:translateY(0) scale(1)}
+}
 @media(max-width:600px){
 #auth-ui-container{top:16px!important;right:8px!important;left:8px!important;max-width:none;padding:8px;gap:7px}
 #auth-ui-container .soap-liquid-btn{min-height:48px;padding:12px 20px;font-size:14px}
 #auth-ui-container .soap-liquid-circle{width:48px;height:48px;min-width:48px;min-height:48px;flex-basis:48px}
 #auth-ui-container .auth-user-wrapper{gap:6px;max-width:100%}
+#auth-ui-container .liquid-dropdown-menu{max-width:calc(100vw - 16px)}
 #auth-modal-overlay{align-items:flex-start;padding:max(16px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
 .auth-modal-content{width:100%;max-width:100%;max-height:calc(100dvh - 32px);margin:auto 0;padding:22px 20px;border-radius:23px}
 .auth-modal-header{padding-left:26px;padding-right:26px;padding-bottom:11px}
@@ -107,6 +122,8 @@ export function initAuthUI() {
 @media(max-width:380px){
 #auth-ui-container .soap-liquid-btn{padding:11px 16px;font-size:13px}
 #auth-ui-container .soap-liquid-circle{width:46px;height:46px;min-width:46px;min-height:46px;flex-basis:46px}
+#auth-ui-container .auth-user-wrapper{gap:4px}
+#auth-ui-container .auth-user-name{padding-left:15px;padding-right:15px}
 .auth-modal-content{padding:21px 17px}
 .auth-modal-header{padding-left:20px;padding-right:20px}
 .auth-modal-scroll{padding-left:3px;padding-right:7px}
@@ -125,19 +142,11 @@ export function initAuthUI() {
 }
 @media(prefers-reduced-motion:reduce){
 #auth-ui-container *,#auth-ui-container *::before,#auth-ui-container *::after,#auth-modal-overlay *,#auth-modal-overlay *::before,#auth-modal-overlay *::after{animation:none!important;transition:none!important}
-}
-@keyframes liquidRubberOpen{
-0%{opacity:0;transform:translateY(-10px) scale(.86,.68)}
-30%{opacity:1;transform:translateY(4px) scale(1.06,1.11)}
-50%{transform:translateY(-3px) scale(.965,.94)}
-68%{transform:translateY(2px) scale(1.025,1.04)}
-84%{transform:translateY(-.5px) scale(.992,.985)}
-100%{opacity:1;transform:translateY(0) scale(1)}
 }`;
     document.head.appendChild(style);
     document.body.appendChild(container);
     let isLoggedin=false;
-    let username='Nhân Nguyễn';
+    let username='Không tên';
     let userData=null;
     let activeDropdown=null;
     let activeArrow=null;
@@ -147,10 +156,12 @@ export function initAuthUI() {
         const savedToken=localStorage.getItem(STORAGE_TOKEN);
         const savedUser=JSON.parse(localStorage.getItem(STORAGE_USER)||'null');
         const savedName=localStorage.getItem(STORAGE_NAME);
+        const savedEmail=localStorage.getItem(STORAGE_EMAIL);
         if(savedToken&&savedUser){
             isLoggedin=true;
             userData=savedUser;
-            username=savedUser.name||savedName||'Nhân Nguyễn';
+            username=savedUser.name||savedName||'Không tên';
+            if(!userData.email&&savedEmail)userData.email=savedEmail;
         }else if(savedName){
             username=savedName;
         }
@@ -264,7 +275,7 @@ export function initAuthUI() {
         confirmInput.addEventListener('input',check);
         passwordInput.addEventListener('input',check);
     }
-    function createField({label,type='text',name,placeholder,password=false,autocomplete='',value=''}) {
+    function createField({label,type='text',name,placeholder,password=false,autocomplete='',value='',disabled=false}){
         const group=document.createElement('div');
         group.className='auth-field-group';
         const labelEl=document.createElement('label');
@@ -278,6 +289,7 @@ export function initAuthUI() {
         input.name=name;
         input.placeholder=placeholder;
         input.value=value;
+        input.disabled=disabled;
         if(autocomplete)input.autocomplete=autocomplete;
         wrapper.appendChild(input);
         if(password){
@@ -290,6 +302,7 @@ export function initAuthUI() {
             eye.addEventListener('click',e=>{
                 e.preventDefault();
                 e.stopPropagation();
+                if(input.disabled)return;
                 open=!open;
                 input.type=open?'text':'password';
                 eye.innerHTML=getEyeIcon(open);
@@ -382,7 +395,7 @@ export function initAuthUI() {
             data=await response.json();
         }catch{}
         if(!response.ok){
-            const message=data?.error?.message||data?.error||data?.message||`Yêu cầu thất bại (${response.status}).`;
+            const message=typeof data?.error==='string'?data.error:data?.error?.message||data?.message||data?.detail||`Yêu cầu thất bại (${response.status}).`;
             throw new Error(String(message));
         }
         return data||{};
@@ -401,17 +414,31 @@ export function initAuthUI() {
         const response=await fetch(`${API_BASE}/api/auth/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,password})});
         return await parseResponse(response);
     }
-    function setLoading(actions,loading){
-        actions.replaceChildren();
-        if(!loading){
-            return;
-        }
+    async function apiRename(email,oldName,newName){
+        let token=null;
+        try{
+            token=localStorage.getItem(STORAGE_TOKEN);
+        }catch{}
+        if(!token)throw new Error('Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại.');
+        const response=await fetch(`${API_BASE}/api/auth/rename`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},body:JSON.stringify({email,oldName,newName})});
+        const data=await parseResponse(response);
+        if(!data.newName)throw new Error('Máy chủ không trả về tên mới hợp lệ.');
+        return data;
+    }
+    function createLoadingBox(){
         const loadingBox=document.createElement('div');
         loadingBox.className='auth-loading';
         const spinner=document.createElement('span');
         spinner.className='auth-spinner';
         loadingBox.appendChild(spinner);
-        actions.appendChild(loadingBox);
+        return loadingBox;
+    }
+    function setLoading(actions,loading){
+        if(loading){
+            actions.replaceChildren(createLoadingBox());
+            return;
+        }
+        actions.replaceChildren();
     }
     function closeModal(){
         const overlay=activeModal;
@@ -430,6 +457,7 @@ export function initAuthUI() {
         closeDropdown();
         if(activeModal)closeModal();
         const isLogin=type==='login';
+        const isRename=type==='rename';
         const overlay=document.createElement('div');
         overlay.id=OLD_MODAL_ID;
         const modal=document.createElement('div');
@@ -438,10 +466,10 @@ export function initAuthUI() {
         header.className='auth-modal-header';
         const title=document.createElement('div');
         title.className='auth-modal-title';
-        title.textContent=isLogin?'Đăng Nhập':'Đăng Ký';
+        title.textContent=isLogin?'Đăng Nhập':isRename?'Đổi tên':'Đăng Ký';
         const subtitle=document.createElement('div');
         subtitle.className='auth-modal-subtitle';
-        subtitle.textContent=isLogin?'Đăng nhập để tiếp tục sử dụng tài khoản của bạn.':'Tạo tài khoản mới để bắt đầu sử dụng.';
+        subtitle.textContent=isLogin?'Đăng nhập để tiếp tục sử dụng tài khoản của bạn.':isRename?'Cập nhật tên hiển thị của tài khoản.':'Tạo tài khoản mới để bắt đầu sử dụng.';
         header.append(title,subtitle);
         const area=document.createElement('div');
         area.className='auth-scroll-area';
@@ -453,11 +481,19 @@ export function initAuthUI() {
         let passwordInput=null;
         let confirmInput=null;
         let emailInput=null;
+        let currentNameInput=null;
+        let newNameInput=null;
         if(isLogin){
             const email=createField({label:'Email',type:'email',name:'email',placeholder:'Nhập email',autocomplete:'email',value:presetEmail});
             const password=createField({label:'Mật khẩu',type:'password',name:'password',placeholder:'Nhập mật khẩu',password:true,autocomplete:'current-password'});
             emailInput=email.input;
             form.append(email.group,password.group);
+        }else if(isRename){
+            const currentName=createField({label:'Tên hiện tại',type:'text',name:'oldName',placeholder:'Tên hiện tại',autocomplete:'name',value:username,disabled:true});
+            const newName=createField({label:'Tên mới',type:'text',name:'newName',placeholder:'Nhập tên mới',autocomplete:'name'});
+            currentNameInput=currentName.input;
+            newNameInput=newName.input;
+            form.append(currentName.group,newName.group);
         }else{
             const name=createField({label:'Họ và tên',type:'text',name:'name',placeholder:'Nhập họ và tên',autocomplete:'name'});
             const email=createField({label:'Email',type:'email',name:'email',placeholder:'Nhập email',autocomplete:'email'});
@@ -486,13 +522,19 @@ export function initAuthUI() {
             submitBtn=document.createElement('button');
             submitBtn.type='submit';
             submitBtn.className='auth-btn submit';
-            submitBtn.textContent=isLogin?'Đăng Nhập':'Đăng Ký';
+            submitBtn.textContent=isLogin?'Đăng Nhập':isRename?'Đổi Tên':'Đăng Ký';
             cancelBtn.addEventListener('click',e=>{
                 e.preventDefault();
                 e.stopPropagation();
                 if(!busy)closeModal();
             });
             actions.append(cancelBtn,submitBtn);
+        }
+        function disableForm(state){
+            form.querySelectorAll('input,.auth-eye').forEach(el=>{
+                if(el===currentNameInput)el.disabled=true;
+                else el.disabled=state;
+            });
         }
         resetActions();
         form.addEventListener('submit',async e=>{
@@ -509,6 +551,7 @@ export function initAuthUI() {
                     return;
                 }
                 busy=true;
+                disableForm(true);
                 setLoading(actions,true);
                 try{
                     await apiLogin(email,password);
@@ -517,6 +560,44 @@ export function initAuthUI() {
                 }catch(err){
                     error.textContent=err?.message||'Đăng nhập thất bại.';
                     busy=false;
+                    disableForm(false);
+                    resetActions();
+                }
+                return;
+            }
+            if(isRename){
+                const oldName=String(username||'Không tên').trim();
+                const newName=String(data.get('newName')||'Không tên').trim();
+                const email=String(userData?.email||localStorage.getItem(STORAGE_EMAIL)||'').trim();
+                if(!oldName||!newName){
+                    error.textContent='Vui lòng nhập đầy đủ thông tin.';
+                    return;
+                }
+                if(!email){
+                    error.textContent='Không tìm thấy email tài khoản.';
+                    return;
+                }
+                if(newName===oldName){
+                    error.textContent='Tên mới phải khác tên hiện tại.';
+                    return;
+                }
+                busy=true;
+                disableForm(true);
+                setLoading(actions,true);
+                try{
+                    const result=await apiRename(email,oldName,newName);
+                    username=String(result.newName).trim();
+                    if(userData)userData={...userData,name:username};
+                    try{
+                        localStorage.setItem(STORAGE_NAME,username);
+                        if(userData)localStorage.setItem(STORAGE_USER,JSON.stringify(userData));
+                    }catch{}
+                    closeModal();
+                    render();
+                }catch(err){
+                    error.textContent=err?.message||'Đổi tên thất bại.';
+                    busy=false;
+                    disableForm(false);
                     resetActions();
                 }
                 return;
@@ -539,6 +620,7 @@ export function initAuthUI() {
                 return;
             }
             busy=true;
+            disableForm(true);
             setLoading(actions,true);
             try{
                 await apiRegister(name,email,password);
@@ -547,6 +629,7 @@ export function initAuthUI() {
             }catch(err){
                 error.textContent=err?.message||'Đăng ký thất bại.';
                 busy=false;
+                disableForm(false);
                 resetActions();
             }
         });
@@ -560,7 +643,7 @@ export function initAuthUI() {
         activeModal=overlay;
         requestAnimationFrame(()=>{
             overlay.classList.add('show');
-            const firstInput=form.querySelector('input');
+            const firstInput=form.querySelector('input:not([disabled])');
             if(firstInput){
                 firstInput.focus();
                 if(isLogin&&presetEmail)firstInput.setSelectionRange(firstInput.value.length,firstInput.value.length);
@@ -570,6 +653,34 @@ export function initAuthUI() {
             if(!area.contains(e.target))return;
             scroll.scrollTop+=e.deltaY;
         },{passive:true});
+    }
+    function getEditIcon(){
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>`;
+    }
+    function getLogoutIcon(){
+        return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path></svg>`;
+    }
+    function createDropdownItem(text,icon,onClick){
+        const button=document.createElement('button');
+        button.type='button';
+        button.className='liquid-dropdown-item';
+        button.innerHTML=`${icon}<span>${text}</span>`;
+        button.addEventListener('click',e=>{
+            e.preventDefault();
+            e.stopPropagation();
+            onClick();
+        });
+        return button;
+    }
+    function toggleDropdown(dropdownMenu,svgArrow){
+        const isOpen=dropdownMenu.classList.contains('show');
+        closeDropdown();
+        if(!isOpen){
+            dropdownMenu.classList.add('show');
+            if(svgArrow)svgArrow.style.transform='rotate(180deg)';
+            activeDropdown=dropdownMenu;
+            activeArrow=svgArrow;
+        }
     }
     function render(){
         closeDropdown();
@@ -590,9 +701,9 @@ export function initAuthUI() {
         }
         const userWrapper=document.createElement('div');
         userWrapper.className='auth-user-wrapper';
-        const nameBubble=document.createElement('div');
-        nameBubble.className='soap-liquid-btn primary';
-        nameBubble.style.cursor='default';
+        const nameBubble=document.createElement('button');
+        nameBubble.type='button';
+        nameBubble.className='soap-liquid-btn primary auth-user-name';
         const name=document.createElement('span');
         name.textContent=username;
         nameBubble.appendChild(name);
@@ -600,28 +711,23 @@ export function initAuthUI() {
         const svgArrow=arrowBubble.querySelector('#svg-arrow');
         const dropdownMenu=document.createElement('div');
         dropdownMenu.className='liquid-dropdown-menu';
-        const logoutBtn=document.createElement('button');
-        logoutBtn.type='button';
-        logoutBtn.className='liquid-dropdown-item';
-        logoutBtn.textContent='Đăng Xuất';
-        logoutBtn.addEventListener('click',e=>{
-            e.stopPropagation();
+        const renameBtn=createDropdownItem('Đổi tên',getEditIcon(),()=>openAuthModal('rename'));
+        const logoutBtn=createDropdownItem('Đăng Xuất',getLogoutIcon(),()=>{
             clearSession();
             isLoggedin=false;
             username='Nhân Nguyễn';
             render();
         });
-        dropdownMenu.appendChild(logoutBtn);
-        arrowBubble.addEventListener('click',e=>{
+        dropdownMenu.append(renameBtn,logoutBtn);
+        nameBubble.addEventListener('click',e=>{
+            e.preventDefault();
             e.stopPropagation();
-            const isOpen=dropdownMenu.classList.contains('show');
-            closeDropdown();
-            if(!isOpen){
-                dropdownMenu.classList.add('show');
-                if(svgArrow)svgArrow.style.transform='rotate(180deg)';
-                activeDropdown=dropdownMenu;
-                activeArrow=svgArrow;
-            }
+            toggleDropdown(dropdownMenu,svgArrow);
+        });
+        arrowBubble.addEventListener('click',e=>{
+            e.preventDefault();
+            e.stopPropagation();
+            toggleDropdown(dropdownMenu,svgArrow);
         });
         userWrapper.append(nameBubble,arrowBubble,dropdownMenu);
         container.appendChild(userWrapper);
@@ -629,8 +735,7 @@ export function initAuthUI() {
     render();
     return{
         login(){
-            isLoggedin=true;
-            render();
+            openAuthModal('login');
         },
         logout(){
             clearSession();
@@ -668,6 +773,9 @@ export function initAuthUI() {
         },
         openRegister(){
             openAuthModal('register');
+        },
+        openRename(){
+            openAuthModal('rename');
         },
         destroy(){
             closeDropdown();
