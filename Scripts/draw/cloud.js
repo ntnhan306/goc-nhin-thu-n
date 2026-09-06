@@ -16,7 +16,7 @@ for (let i = 1; i <= totalImages; i++) {
     };
     cloudImgs.push(img);
 }
-export function drawCloud(ctx, cloud) {
+function drawCloud(ctx, cloud) {
     ctx.save();
     ctx.globalAlpha = cloud.alpha;
     ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.img.width * cloud.scale, cloud.img.height * cloud.scale );
@@ -56,3 +56,4 @@ export function updateClouds(ctx, canvas) {
         drawCloud(ctx, c);
     });
 }
+export default { addCloud, updateClouds }
