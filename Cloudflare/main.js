@@ -1,4 +1,4 @@
-import { handleLogin, handleRegister } from './api/auth.js';
+import { handleLogin, handleRegister, handleRename } from './api/auth.js';
 function corsHeaders() {
     return {
         'Access-Control-Allow-Origin': '*',
@@ -17,6 +17,8 @@ export default {
             response = await handleLogin(request, env);
         } else if (url.pathname === '/api/auth/register' && request.method === 'POST') {
             response = await handleRegister(request, env);
+        } else if (url.pathname === '/api/auth/rename' && request.method === 'POST') {
+            response = await handleRename(request, env);
         } else {
             response = new Response(JSON.stringify({ message: 'API Endpoint not found' }), {
                 status: 404,
