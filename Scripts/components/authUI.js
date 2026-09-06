@@ -30,16 +30,23 @@ export function initAuthUI() {
 #auth-ui-container .soap-liquid-btn:hover::before,#auth-ui-container .soap-liquid-circle:hover::before{box-shadow:inset 2px 2px 9px rgba(255,255,255,.30),inset -3px -3px 13px rgba(0,70,210,.23),inset 0 0 25px rgba(0,105,255,.15)}
 #auth-ui-container .soap-liquid-btn:focus,#auth-ui-container .soap-liquid-btn:focus-visible,#auth-ui-container .soap-liquid-circle:focus,#auth-ui-container .soap-liquid-circle:focus-visible{border:none!important;outline:none!important}
 #auth-ui-container .soap-liquid-btn:active,#auth-ui-container .soap-liquid-circle:active{transform:scale(.95);transition-duration:.12s}
-#auth-ui-container .auth-user-wrapper{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:8px;overflow:visible;min-width:0;max-width:calc(100vw - 16px)}
+#auth-ui-container .auth-user-wrapper{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:8px;overflow:visible;min-width:0;max-width:calc(100vw - 16px);padding:8px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,.18);background:radial-gradient(ellipse at center,rgba(255,255,255,0) 82%,rgba(255,255,255,.08) 91%,rgba(255,255,255,.4) 100%);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);box-shadow:inset 0 0 5px rgba(255,255,255,.35),0 4px 18px rgba(0,0,0,.05)}
 #auth-ui-container .auth-user-name{cursor:pointer!important}
 #auth-ui-container .auth-user-name>span{pointer-events:none}
 #auth-ui-container #svg-arrow{display:block;width:15px;height:15px;flex:0 0 auto;overflow:visible;pointer-events:none;transition:transform .4s cubic-bezier(.16,1,.3,1)}
-#auth-ui-container .liquid-dropdown-menu{position:absolute;top:calc(100% + 10px);right:0;z-index:1001;min-width:175px;max-width:min(320px,calc(100vw - 16px));padding:6px;display:none;flex-direction:column;gap:2px;overflow:visible;border:none!important;outline:none!important;border-radius:18px;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:inset 2px 2px 11px rgba(0,105,255,.30),inset -3px -3px 13px rgba(0,75,210,.18),inset 0 0 24px rgba(0,105,255,.10)!important;transform-origin:top right}
+#auth-ui-container .liquid-dropdown-menu{position:absolute;top:calc(100% + 10px);right:0;z-index:1001;min-width:175px;max-width:min(320px,calc(100vw - 16px));padding:6px 12px 6px 6px;display:none;flex-direction:column;gap:2px;overflow:visible;border:none!important;outline:none!important;border-radius:18px;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:inset 9px 9px 24px rgba(46,184,255,.68),inset -9px -9px 24px rgba(46,184,255,.62),inset 0 0 38px rgba(46,184,255,.58),inset 0 0 60px rgba(46,184,255,.42)!important;transform-origin:top right;will-change:transform,opacity,filter}
 #auth-ui-container .liquid-dropdown-menu.show{display:flex;animation:liquidRubberOpen .68s cubic-bezier(.16,1.35,.3,1)}
+#auth-ui-container .liquid-dropdown-menu.closing{display:flex;animation:liquidRubberClose .34s cubic-bezier(.4,0,.2,1) forwards;pointer-events:none}
 #auth-ui-container .liquid-dropdown-item{width:100%;min-height:42px;padding:10px 14px;border:none!important;outline:none!important;border-radius:12px;background:transparent;color:#fff;font-family:inherit;font-size:14px;font-weight:500;line-height:1.3;text-align:left;white-space:nowrap;overflow:visible;cursor:pointer;display:flex;align-items:center;gap:9px;transition:transform .3s cubic-bezier(.16,1,.3,1),background .2s ease,box-shadow .3s ease}
 #auth-ui-container .liquid-dropdown-item svg{width:16px;height:16px;min-width:16px;display:block;pointer-events:none}
-#auth-ui-container .liquid-dropdown-item:hover{background:rgba(0,105,255,.025);box-shadow:inset 1px 1px 7px rgba(0,105,255,.24),inset -2px -2px 7px rgba(0,75,210,.13);transform:translateX(3px) scale(1.015)}
+#auth-ui-container .liquid-dropdown-item:hover{background:rgba(0,105,255,.025);box-shadow:inset 1px 1px 7px rgba(0,105,255,.24),inset -2px -2px 7px rgba(0,75,210,.13);transform:translateX(3px) scale(1.080)}
 #auth-ui-container .liquid-dropdown-item:focus,#auth-ui-container .liquid-dropdown-item:focus-visible{border:none!important;outline:none!important}
+#auth-ui-container .auth-state-switch{display:flex;align-items:center;justify-content:flex-end;gap:10px;overflow:visible;transform-origin:right center}
+#auth-ui-container .auth-state-switch.switching-out{animation:authStateOut .42s cubic-bezier(.16,1,.3,1) forwards}
+#auth-ui-container .auth-state-switch.switching-in{animation:authStateIn .62s cubic-bezier(.16,1.15,.3,1) forwards}
+#auth-ui-container .auth-state-switch .soap-liquid-btn,#auth-ui-container .auth-state-switch .auth-user-wrapper{will-change:transform,opacity}
+#auth-ui-container .auth-state-switch.switching-out .soap-liquid-btn{animation:authButtonOut .42s cubic-bezier(.16,1,.3,1) forwards}
+#auth-ui-container .auth-state-switch.switching-in .auth-user-wrapper{animation:authUserIn .62s cubic-bezier(.16,1.15,.3,1) forwards}
 #auth-modal-overlay{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;width:100vw;height:100dvh;min-height:100vh;padding:max(20px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));overflow:hidden;overscroll-behavior:contain;background:rgba(8,20,40,.30);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .32s ease,visibility .32s ease}
 #auth-modal-overlay.show{opacity:1;visibility:visible}
 .auth-modal-content{position:relative;width:min(100%,440px);max-width:440px;min-height:0;max-height:calc(100dvh - 40px);margin:auto;padding:25px 28px;border-radius:28px;background:rgba(235,242,252,.30);border:none!important;outline:none!important;display:flex;flex-direction:column;gap:0;overflow:hidden!important;overscroll-behavior:contain;font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-shadow:inset 2px 2px 18px rgba(255,255,255,.42),inset -4px -4px 22px rgba(0,80,220,.16),inset 0 0 35px rgba(0,105,255,.10),0 20px 70px rgba(0,35,100,.12);transform:translateY(22px) scale(.94);opacity:0;transition:transform .48s cubic-bezier(.16,1.2,.3,1),opacity .30s ease}
@@ -106,13 +113,41 @@ export function initAuthUI() {
 84%{transform:translateY(-.5px) scale(.992,.985)}
 100%{opacity:1;transform:translateY(0) scale(1)}
 }
+@keyframes liquidRubberClose{
+0%{opacity:1;transform:translateY(0) scale(1)}
+35%{opacity:.92;transform:translateY(4px) scale(1.015,.97)}
+100%{opacity:0;transform:translateY(9px) scale(.88,.72);filter:blur(2px)}
+}
+@keyframes authStateOut{
+0%{opacity:1;transform:scaleX(1)}
+45%{opacity:1;transform:scaleX(.92)}
+100%{opacity:0;transform:scaleX(.72)}
+}
+@keyframes authStateIn{
+0%{opacity:0;transform:scaleX(.72)}
+35%{opacity:1;transform:scaleX(1.04)}
+65%{transform:scaleX(.98)}
+100%{opacity:1;transform:scaleX(1)}
+}
+@keyframes authButtonOut{
+0%{opacity:1;transform:scale(1)}
+60%{opacity:.35;transform:scale(.72) translateX(8px)}
+100%{opacity:0;transform:scale(.45) translateX(14px)}
+}
+@keyframes authUserIn{
+0%{opacity:0;transform:scale(.45) translateX(14px)}
+35%{opacity:1;transform:scale(1.07) translateX(0)}
+60%{transform:scale(.97)}
+100%{opacity:1;transform:scale(1)}
+}
 @media(max-width:600px){
 #auth-ui-container{top:16px!important;right:8px!important;left:8px!important;max-width:none;padding:8px;gap:7px}
 #auth-ui-container .soap-liquid-btn{min-height:48px;padding:12px 20px;font-size:14px}
 #auth-ui-container .soap-liquid-circle{width:48px;height:48px;min-width:48px;min-height:48px;flex-basis:48px}
 #auth-ui-container .auth-user-wrapper{gap:6px;max-width:100%}
+#auth-ui-container .auth-state-switch{gap:7px}
 #auth-ui-container .liquid-dropdown-menu{max-width:calc(100vw - 16px)}
-#auth-modal-overlay{align-items:flex-start;padding:max(16px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
+#auth-modal-overlay{align-items:flex-start;padding:max(16px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-bottom))}
 .auth-modal-content{width:100%;max-width:100%;max-height:calc(100dvh - 32px);margin:auto 0;padding:22px 20px;border-radius:23px}
 .auth-modal-header{padding-left:26px;padding-right:26px;padding-bottom:11px}
 .auth-modal-title{font-size:24px}
@@ -152,6 +187,7 @@ export function initAuthUI() {
     let activeArrow=null;
     let activeModal=null;
     let activeScrollbarDestroy=null;
+    let switching=false;
     try{
         const savedToken=localStorage.getItem(STORAGE_TOKEN);
         const savedUser=JSON.parse(localStorage.getItem(STORAGE_USER)||'null');
@@ -183,9 +219,19 @@ export function initAuthUI() {
         }catch{}
         userData=null;
     }
+    let dropdownCloseTimer=null;
     function closeDropdown(){
-        if(activeDropdown)activeDropdown.classList.remove('show');
-        if(activeArrow)activeArrow.style.transform='rotate(0deg)';
+        const dropdown=activeDropdown;
+        const arrow=activeArrow;
+        if(dropdown){
+            clearTimeout(dropdownCloseTimer);
+            dropdown.classList.remove('show');
+            dropdown.classList.add('closing');
+            dropdownCloseTimer=setTimeout(()=>{
+                dropdown.classList.remove('closing');
+            },340);
+        }
+        if(arrow)arrow.style.transform='rotate(0deg)';
         activeDropdown=null;
         activeArrow=null;
     }
@@ -554,9 +600,14 @@ export function initAuthUI() {
                 disableForm(true);
                 setLoading(actions,true);
                 try{
+                    const previousState=isLoggedin;
                     await apiLogin(email,password);
                     closeModal();
-                    render();
+                    if(!previousState){
+                        await switchAuthState(true);
+                    }else{
+                        render();
+                    }
                 }catch(err){
                     error.textContent=err?.message||'Đăng nhập thất bại.';
                     busy=false;
@@ -566,8 +617,8 @@ export function initAuthUI() {
                 return;
             }
             if(isRename){
-                const oldName=String(username||'Không tên').trim();
-                const newName=String(data.get('newName')||'Không tên').trim();
+                const oldName=String(username||'').trim();
+                const newName=String(data.get('newName')||'').trim();
                 const email=String(userData?.email||localStorage.getItem(STORAGE_EMAIL)||'').trim();
                 if(!oldName||!newName){
                     error.textContent='Vui lòng nhập đầy đủ thông tin.';
@@ -682,23 +733,25 @@ export function initAuthUI() {
             activeArrow=svgArrow;
         }
     }
-    function render(){
-        closeDropdown();
-        container.replaceChildren();
-        if(!isLoggedin){
-            const loginBtn=createBubble('Đăng Nhập');
-            const registerBtn=createBubble('Đăng Ký',true);
-            loginBtn.addEventListener('click',e=>{
-                e.stopPropagation();
-                openAuthModal('login');
-            });
-            registerBtn.addEventListener('click',e=>{
-                e.stopPropagation();
-                openAuthModal('register');
-            });
-            container.append(loginBtn,registerBtn);
-            return;
-        }
+    function createLoggedOutState(){
+        const state=document.createElement('div');
+        state.className='auth-state-switch';
+        const loginBtn=createBubble('Đăng Nhập');
+        const registerBtn=createBubble('Đăng Ký',true);
+        loginBtn.addEventListener('click',e=>{
+            e.stopPropagation();
+            openAuthModal('login');
+        });
+        registerBtn.addEventListener('click',e=>{
+            e.stopPropagation();
+            openAuthModal('register');
+        });
+        state.append(loginBtn,registerBtn);
+        return state;
+    }
+    function createLoggedInState(){
+        const state=document.createElement('div');
+        state.className='auth-state-switch';
         const userWrapper=document.createElement('div');
         userWrapper.className='auth-user-wrapper';
         const nameBubble=document.createElement('button');
@@ -712,11 +765,9 @@ export function initAuthUI() {
         const dropdownMenu=document.createElement('div');
         dropdownMenu.className='liquid-dropdown-menu';
         const renameBtn=createDropdownItem('Đổi tên',getEditIcon(),()=>openAuthModal('rename'));
-        const logoutBtn=createDropdownItem('Đăng Xuất',getLogoutIcon(),()=>{
-            clearSession();
-            isLoggedin=false;
-            username='Nhân Nguyễn';
-            render();
+        const logoutBtn=createDropdownItem('Đăng Xuất',getLogoutIcon(),async()=>{
+            closeDropdown();
+            await switchAuthState(false);
         });
         dropdownMenu.append(renameBtn,logoutBtn);
         nameBubble.addEventListener('click',e=>{
@@ -730,7 +781,37 @@ export function initAuthUI() {
             toggleDropdown(dropdownMenu,svgArrow);
         });
         userWrapper.append(nameBubble,arrowBubble,dropdownMenu);
-        container.appendChild(userWrapper);
+        state.appendChild(userWrapper);
+        return state;
+    }
+    async function switchAuthState(loggedIn){
+        if(switching)return;
+        switching=true;
+        closeDropdown();
+        const oldState=container.firstElementChild;
+        if(oldState){
+            oldState.classList.add('switching-out');
+            await new Promise(resolve=>setTimeout(resolve,260));
+        }
+        if(loggedIn){
+            container.replaceChildren(createLoggedInState());
+        }else{
+            clearSession();
+            isLoggedin=false;
+            username='Nhân Nguyễn';
+            container.replaceChildren(createLoggedOutState());
+        }
+        const newState=container.firstElementChild;
+        if(newState){
+            newState.classList.add('switching-in');
+            setTimeout(()=>newState.classList.remove('switching-in'),650);
+        }
+        switching=false;
+    }
+    function render(){
+        closeDropdown();
+        if(switching)return;
+        container.replaceChildren(isLoggedin?createLoggedInState():createLoggedOutState());
     }
     render();
     return{
@@ -738,10 +819,7 @@ export function initAuthUI() {
             openAuthModal('login');
         },
         logout(){
-            clearSession();
-            isLoggedin=false;
-            username='Nhân Nguyễn';
-            render();
+            switchAuthState(false);
         },
         setUsername(name){
             username=String(name??'');
