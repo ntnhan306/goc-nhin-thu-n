@@ -205,3 +205,77 @@ export async function handleRename(request, env) {
         });
     }
 }
+
+export async function handleGoogleLogin(request, env) {
+    try {
+        const { email, name, googleIdToken } = await request.json();
+
+        if (!email || !googleIdToken) {
+            return new Response(JSON.stringify({ message: 'Thiếu thông tin xác thực từ Google.' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
+
+        const apiKey = env.FIREBASE_API_KEY || firebaseConfig.apiKey;
+
+        const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=${apiKey}`;
+
+        const fbResponse = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                postBody: `id_token=${googleIdToken}&providerId=google.com`,
+                requestUri: 'https://goc-nhin-thu-n.ntnhan3062.workers.dev',
+                returnSecureToken: true
+            })
+        });
+
+        const fbData = await fbResponse.json();
+
+        if (!fbResponse.ok) {
+            return new Response(JSON.stringify({ 
+                message: fbData.error?.message || 'Đăng nhập Google thất bại.',
+                hint: 'Nếu email này đã đăng ký bằng mật khẩu, hãy chắc chắn đã liên kết tài khoản ở phía client SDK.'
+            }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
+
+        let userName = fbData.displayName || name || email.split('@')[0];
+
+        if (!fbData.displayName && name) {
+            const updateUrl = `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${apiKey}`;
+            await fetch(updateUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    idToken: fbData.idToken,
+                    displayName: name,
+                    returnSecureToken: true
+                })
+            });
+            userName = name;
+        }
+
+        return new Response(JSON.stringify({
+            message: 'Đăng nhập Google thành công',
+            token: fbData.idToken,
+            user: {
+                email: fbData.email || email,
+                localId: fbData.localId,
+                name: userName
+            }
+        }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+    } catch (err) {
+        return new Response(JSON.stringify({ message: 'Lỗi hệ thống server: ' + err.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
+}
